@@ -102,6 +102,8 @@ CREATE TABLE `posts` (
   `status` enum('published','draft','review') NOT NULL,
   `created` int(11) DEFAULT NULL,
   `updated` int(11) DEFAULT NULL,
+  `created_ts` TIMESTAMP DEFAULT 0,
+  `updated_ts` TIMESTAMP DEFAULT 0,
   `published` int(11) DEFAULT NULL,
   `author_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -109,10 +111,10 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` (`id`,`name`,`slug`,`status`,`created`,`updated`,`published`,`author_id`)
+INSERT INTO `posts` (`id`,`name`,`slug`,`status`,`created`,`updated`, `created_ts`, `updated_ts`,`published`,`author_id`)
 VALUES
-	(1,'First Post','first-post','draft',1264985737,1264985737,1264985737,1),
-	(2,'Second Post','second-post','review',1264985737,1264985737,1264985737,1);
+	(1,'First Post','first-post','draft',1264985737,1264985737,FROM_UNIXTIME(1264985737),FROM_UNIXTIME(1264985737),1264985737,1),
+	(2,'Second Post','second-post','review',1264985737,1264985737,FROM_UNIXTIME(1264985737),FROM_UNIXTIME(1264985737),1264985737,1);
 
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;

@@ -33,7 +33,12 @@ Class Jelly_Fields extends PHPUnit_Framework_TestCase
 			array(new Field_Serialized, 'a:1:{i:0;s:4:"test";}', array('test')),
 			array(new Field_Timestamp, 'Some Unparseable Time', 'Some Unparseable Time'),
 			array(new Field_Timestamp, '1264985682', 1264985682),
+			array(new Field_Timestamp, 1268675792, 1268675792),
 			array(new Field_Timestamp, '03/15/2010 12:56:32', 1268675792),
+			array(new Field_NativeTimestamp, 'Some Unparseable Time', 'Some Unparseable Time'),
+			array(new Field_NativeTimestamp, '1264985682', 1264985682),
+			array(new Field_NativeTimestamp, '03/15/2010 12:56:32', 1268675792),
+			array(new Field_NativeTimestamp, 1268675792, 1268675792),
 			array(new Field_Enum(array('choices' => array(1,2,3))), '1', 1),
 			array(new Field_Enum(array('choices' => array(1,2,3))), '4', NULL),
 		);

@@ -42,6 +42,35 @@ Class Jelly_Load extends PHPUnit_Framework_TestCase
 		$this->assertEquals(1264985737, $model->created);
 	}
 	
+	public function providerWrappedLoad()
+	{
+		// Ensure database is loaded
+		Jelly_Test::bootstrap();
+
+		return array(
+			array(new Model_WrappedPost(1)),
+			array(new Model_WrappedPost(array('id' => 1))),
+			array(Jelly::factory('wrappedpost')->load(1)),
+			array(Jelly::factory('wrappedpost')->load(1, 500)),
+			array(Jelly::factory('wrappedpost')->where('id', '=', 1)->load(NULL, 1)),
+			array(Jelly::factory('wrappedpost')->where('id', '=', 1)->limit(1, TRUE)->load()),
+		);
+	}
+	
+	/**
+	 * @dataProvider providerWrappedLoad
+	 */
+	public function testWrappedLoad($model)
+	{
+		$this->assertEquals(TRUE, $model->loaded());
+		$this->assertEquals(TRUE, $model->saved());
+		$this->assertEquals(1, $model->id());
+		$this->assertEquals(1, $model->id);
+		$this->assertEquals('First Post', $model->name());
+		$this->assertEquals('first-post', $model->slug);
+		$this->assertEquals(1264985737, $model->created);
+	}
+	
 	public function testBelongsTo()
 	{
 		$model = Model::factory('post', 1)->author;

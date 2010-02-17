@@ -58,15 +58,17 @@ return array
 	  `status` enum('published','draft','review') NOT NULL,
 	  `created` int(11) DEFAULT NULL,
 	  `updated` int(11) DEFAULT NULL,
+	  `created_ts` TIMESTAMP DEFAULT 0,
+	  `updated_ts` TIMESTAMP DEFAULT 0,
 	  `published` int(11) DEFAULT NULL,
 	  `author_id` int(11) DEFAULT NULL,
 	  PRIMARY KEY (`id`)
 	) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;",
 
-	"INSERT INTO `posts` (`id`,`name`,`slug`,`status`,`created`,`updated`,`published`,`author_id`)
+	"INSERT INTO `posts` (`id`,`name`,`slug`,`status`,`created`,`updated`,`created_ts`,`updated_ts`,`published`,`author_id`)
 	VALUES
-		(1,'First Post','first-post','draft',1264985737,1264985737,1264985737,1),
-		(2,'Second Post','second-post','review',1264985737,1264985737,1264985737,1);",
+		(1,'First Post','first-post','draft',1264985737,1264985737,FROM_UNIXTIME(1264985737),FROM_UNIXTIME(1264985737),1264985737,1),
+		(2,'Second Post','second-post','review',1264985737,1264985737,FROM_UNIXTIME(1264985737),FROM_UNIXTIME(1264985737),1264985737,1);",
 
 	"DROP TABLE IF EXISTS `roles`;",
 
