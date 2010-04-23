@@ -36,6 +36,15 @@ Class Jelly_Fields extends PHPUnit_Framework_TestCase
 			array(new Field_String, 1, '1'),
 			array(new Field_String, NULL, NULL), // NULLs should be preserved
 			
+			// Text fields
+			array(new Field_Text, 1, '1'),
+			array(new Field_Text, NULL, NULL), // NULLs should be preserved
+			
+			// Email Addresses
+			array(new Field_Email, 1, '1'),
+			array(new Field_Email, 'foo@bar.com', 'foo@bar.com'),
+			array(new Field_Email, NULL, NULL), // NULLs should be preserved
+			
 			// Slugs
 			array(new Field_Slug, 'Hello, World', 'hello-world'),
 			array(new Field_Slug, NULL, NULL), // NULLs should be preserved
@@ -111,5 +120,55 @@ Class Jelly_Fields extends PHPUnit_Framework_TestCase
 		$this->assertEquals(NULL, $field->set(''));
 		$this->assertEquals(NULL, $field->set(NULL));
 		$this->assertEquals(NULL, $field->set(FALSE));
+	}
+	
+	public function providerInstanceSet()
+	{
+		return array(
+			// Enum
+			array('Field_Enum', array(array('choices' => array('yes', 'no'))), NULL),
+			array('Field_Enum', array(array('choices' => array('yes'=>'Yes', 'no'=>'No'))), NULL),
+			
+			// Email address
+			array('Field_Email', array(), NULL),
+			array('Field_Email', array(), array('modelname', 'columnname')),
+			
+			// File field
+			array('Field_File', array(array('path' => '/tmp/')), NULL),
+			
+			// Has Many
+			array('Field_HasMany', array(), array('author', 'posts')),
+			array('Field_HasMany', array(array('foreign' => 'post')), array('author', 'posts')),
+			array('Field_HasMany', array(array('foreign' => 'post.author_id')), array('author', 'posts')),
+			
+			// Many To Many
+			array('Field_ManyToMany', array(), array('post', 'categories')),
+			array('Field_ManyToMany', array(array('foreign' => 'category')), array('post', 'categories')),
+			array('Field_ManyToMany', array(array('foreign' => 'category.id')), array('post', 'categories')),
+			// array('Field_ManyToMany', array('through' => 'TODO'), array('post', 'categories')),
+			// array('Field_ManyToMany', array('through' => 'TODO'), array('post', 'categories')),
+			
+			// Belongs To
+			array('Field_BelongsTo', array(), array('post', 'categories')),
+			array('Field_BelongsTo', array(array('foreign' => 'author')), array('post', 'author')),
+			array('Field_BelongsTo', array(array('foreign' => 'author.id')), array('post', 'author')),
+		);
+	}
+	
+	/**
+	 * @dataProvider providerInstanceSet
+	 */
+	public function testInstanceSet($class_name, $instance_args, $initialize_args)
+	{
+		$ref = new ReflectionClass($class_name);
+		$this->assertEquals(TRUE, $ref->isInstantiable());
+		
+		$instance = $ref->newInstanceArgs($instance_args);
+		
+		if ($initialize_args !== NULL)
+		{
+			$method = new ReflectionMethod($class_name, 'initialize');
+			$method->invokeArgs($instance, $initialize_args);
+		}
 	}
 }
