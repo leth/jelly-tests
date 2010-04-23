@@ -23,6 +23,7 @@ Class Jelly_Input extends PHPUnit_Framework_TestCase
 		$view->value		= Jelly::select('author', 1);
 		$view->options		= array(1 => 'Jonathan Geiger');
 		$view->attributes	= array();
+		$view->html_id_prefix = 'field-';
 		
 		// And compare
 		$this->assertEquals($expected, $view->render());
@@ -44,6 +45,7 @@ Class Jelly_Input extends PHPUnit_Framework_TestCase
 			2 => 'Second Post',
 		);
 		$view->attributes	= array();
+		$view->html_id_prefix = 'field-';
 		
 		// And compare
 		$this->assertEquals($expected, $view->render());
@@ -61,6 +63,7 @@ Class Jelly_Input extends PHPUnit_Framework_TestCase
 		$view->foreign		= array('model' => 'post');
 		$view->ids			= Jelly::select('post')->execute()->as_array(NULL, 'id');
 		$view->attributes	= array();
+		$view->html_id_prefix = 'field-';
 		
 		// And compare
 		$this->assertEquals($expected, $view->render());
@@ -78,6 +81,7 @@ Class Jelly_Input extends PHPUnit_Framework_TestCase
 		$view->foreign		= array('model' => 'category');
 		$view->ids			= Jelly::select('category')->execute()->as_array(NULL, 'id');
 		$view->attributes	= array();
+		$view->html_id_prefix = 'field-';
 		
 		// And compare
 		$this->assertEquals($expected, $view->render());
@@ -97,6 +101,7 @@ Class Jelly_Input extends PHPUnit_Framework_TestCase
 		$view->value		= 'draft';
 		$view->attributes	= array('class' => 'test');
 		$view->choices		= array('published' => 'published', 'draft' => 'draft', 'review' => 'review');
+		$view->html_id_prefix = 'field-';
 		
 		// And compare
 		$this->assertEquals($expected, $view->render());
