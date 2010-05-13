@@ -90,4 +90,69 @@ return array
 
 	"INSERT INTO roles (id,name)
 	VALUES (2,'Freelancer');",
+	
+	// Filterable Jelly test data.
+	
+	// "DROP TABLE IF EXISTS libraries;",
+	// 
+	// "CREATE TABLE libraries (
+	//   id INTEGER PRIMARY KEY,
+	//   name TEXT NULL
+	// );",
+	// 
+	// "INSERT INTO libraries (id, name)
+	// VALUES (NULL, 'Library One');",
+	// 
+	// "INSERT INTO libraries (id, name)
+	// VALUES (NULL, 'Library Two');",
+	
+	"DROP TABLE IF EXISTS members",
+	
+	"CREATE TABLE members (
+		id INTEGER PRIMARY KEY,
+		name TEXT NULL
+	);",
+	
+	"INSERT INTO members (id, name)
+	VALUES (NULL, 'Bob');",
+	
+	"INSERT INTO members (id, name)
+	VALUES (NULL, 'Joe');",
+	
+	"DROP TABLE IF EXISTS books",
+	
+	"CREATE TABLE books (
+		id INTEGER PRIMARY KEY,
+		name TEXT NULL
+	);",
+	
+	"INSERT INTO books (id, name)
+	VALUES (NULL, 'Book One');",
+	
+	"INSERT INTO books (id, name)
+	VALUES (NULL, 'Book Two');",
+	
+	"DROP TABLE IF EXISTS loans",
+	
+	"CREATE TABLE loans (
+		id INTEGER PRIMARY KEY,
+		book_id INTEGER,
+		member_id INTEGER,
+		issued INTEGER,
+		due INTEGER,
+		returned INTEGER NULL
+	);",
+	
+	"INSERT INTO loans (id, book_id, member_id, issued, due, returned)
+	VALUES (NULL, 1, 1, ". strtotime('10 days ago') .', '. strtotime('yesterday') .', '. strtotime('5 days ago') .");",
+
+	"INSERT INTO loans (id, book_id, member_id, issued, due, returned)
+	VALUES (NULL, 1, 2, ". strtotime('yesterday') .', '. strtotime('tomorrow') .", NULL);",
+	
+	"INSERT INTO loans (id, book_id, member_id, issued, due, returned)
+	VALUES (NULL, 2, 2, ". strtotime('2 days ago') .', '. strtotime('yesterday') .", NULL);",
+
+	"INSERT INTO loans (id, book_id, member_id, issued, due, returned)
+	VALUES (NULL, 2, 2, ". strtotime('3 days ago') .', '. strtotime('2 days ago') .', '. strtotime('1 day ago') .");",
+	
 );
