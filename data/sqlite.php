@@ -131,6 +131,9 @@ return array
 	
 	"INSERT INTO books (id, name)
 	VALUES (NULL, 'Book Two');",
+
+	"INSERT INTO books (id, name)
+	VALUES (NULL, 'Book Three');",
 	
 	"DROP TABLE IF EXISTS loans",
 	
@@ -153,6 +156,6 @@ return array
 	VALUES (NULL, 2, 2, ". strtotime('2 days ago') .', '. strtotime('yesterday') .", NULL);",
 
 	"INSERT INTO loans (id, book_id, member_id, issued, due, returned)
-	VALUES (NULL, 2, 2, ". strtotime('3 days ago') .', '. strtotime('2 days ago') .', '. strtotime('1 day ago') .");",
+	VALUES (NULL, 3, 2, ". strtotime('3 days ago') .', '. strtotime('2 days ago') .', '. strtotime('1 day ago') .");",
 	
 );

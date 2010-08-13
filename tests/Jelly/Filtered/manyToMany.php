@@ -11,21 +11,40 @@ Jelly_Test::bootstrap();
  */
 Class Jelly_Filtered_ManyToMany extends PHPUnit_Framework_TestCase
 {
-
-	public function testFoo()
+	
+	public function testFilterProvider()
 	{
-		try {
-			$member_1 = Jelly::select('member', 2);
-			echo "Books on loan:\n<br/>";
-			foreach ($member_1->books_on_loan as $book)
-				echo $book->name . "\n<br/>";
-			
-			echo "Books overdue:\n<br/>";
-			foreach ($member_1->books_overdue as $book)
-				echo $book->name . "\n<br/>";
-				
-		} catch (Exception $e) {
-			var_dump($e);
-		}
+		return array(
+			// No Filtering. Should function as vanilla ManyToMany
+			array(1, 1, 'books_ever_loaned', array(1), array(2, 3, 4)),
+			array(2, 3, 'books_ever_loaned', array(1, 2, 3), array()),
+			// Filtering on through table
+			array(1, 0, 'books_on_loan', array(), array(1, 2, 3, 4)),
+			array(1, 0, 'books_overdue', array(), array(1, 2, 3, 4)),
+			array(2, 2, 'books_on_loan', array(1, 2), array(3, 4)),
+			array(2, 1, 'books_overdue', array(2), array(1, 3, 4)),
+			// Filtering on foreign table
+			array(1, 0, 'books_ever_loaned_except_book_one', array(), array(1)),
+			array(2, 2, 'books_ever_loaned_except_book_one',array(2,3), array(1)),
+			// Filtering on both tables
+			array(1, 0, 'books_on_loan_except_book_one', array(), array(1, 2, 3, 4)),
+			array(2, 1, 'books_on_loan_except_book_one', array(2), array(1, 3, 4)),
+		);
+	}
+	
+	/**
+	 * @dataProvider testFilterProvider
+	 */
+	public function testFilter($member_id, $exp_count, $field, $exp_has, $exp_has_not)
+	{
+		$member = Jelly::select('member', $member_id);
+		$this->assertEquals($exp_count, count($member->$field));
+		
+		foreach ($exp_has as $id)
+			$this->assertEquals(TRUE, $member->has($field, $id));
+		
+		foreach ($exp_has_not as $id)
+			$this->assertEquals(FALSE, $member->has($field, $id));
+		
 	}
 }
