@@ -1,13 +1,14 @@
 <?php
 
-class Model_Book extends Jelly_Model
+class Model_Book extends Model_Test
 {
 	public static function initialize(Jelly_Meta $meta)
 	{
-		$meta->db = Jelly_Test::GROUP;
-		$meta->fields += array(
-			'id' => new Field_Primary,
-			'name' => new Field_String,
-		);
+		parent::initialize($meta);
+		
+		$meta->fields(array(
+			'id' => Jelly::field('primary'),
+			'name' => Jelly::field('string'),
+		));
 	}
 }

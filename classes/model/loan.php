@@ -1,18 +1,19 @@
 <?php
 
-class Model_loan extends Jelly_Model
+class Model_Loan extends Model_Test
 {
 	public static function initialize(Jelly_Meta $meta)
 	{
-		$meta->db = Jelly_Test::GROUP;
-		$meta->fields += array(
-			'id' => new Field_Primary,
-			'member' => new Field_BelongsTo,
-			'book' => new Field_HasOne,
+		parent::initialize($meta);
+		
+		$meta->fields(array(
+			'id' => Jelly::field('primary'),
+			'member' => Jelly::field('belongsto'),
+			'book' => Jelly::field('hasone'),
 			
-			'issued' => new Field_Timestamp,
-			'due' => new Field_Timestamp,
-			'returned' => new Field_Timestamp,
-		);
+			'issued' => Jelly::field('timestamp'),
+			'due' => Jelly::field('timestamp'),
+			'returned' => Jelly::field('timestamp'),
+		));
 	}
 }

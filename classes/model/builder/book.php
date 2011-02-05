@@ -8,6 +8,6 @@ class Model_Builder_Book extends Jelly_Builder
 	 */
 	public function is_not_book_one()
 	{
-		return $this->where('name', 'IS NOT', 'Book One');
+		return $this->where('name', '!=', 'Book One');
 	}
 }

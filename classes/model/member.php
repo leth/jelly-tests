@@ -1,42 +1,55 @@
 <?php
 
-class Model_Member extends Jelly_Model
+class Model_Member extends Model_Test
 {
 	public static function initialize(Jelly_Meta $meta)
 	{
-		$meta->db = Jelly_Test::GROUP;
-		$meta->fields += array(
-			'id' => new Field_Primary,
-			'name' => new Field_String,
+		parent::initialize($meta);
+		
+		$meta->fields(array(
+			'id' => Jelly::field('primary'),
+			'name' => Jelly::field('string'),
 			
-			'books_ever_loaned' => new Field_Filterable_ManyToMany(array(
+			'books_ever_loaned' => Jelly::field('filterable_manytomany', array(
 				'foreign' => 'book',
 				'through' => 'loan',
 			)),
-			'books_ever_loaned_except_book_one' => new Field_Filterable_ManyToMany(array(
+			'books_ever_loaned_except_book_one' => Jelly::field('filterable_manytomany', array(
 				'foreign' => 'book',
 				'through' => 'loan',
 				'filter'  => 'is_not_book_one',
 			)),
 			
-			'books_on_loan' => new Field_Filterable_ManyToMany(array(
+			'books_on_loan' => Jelly::field('filterable_manytomany', array(
 				'foreign' => 'book',
 				'through' => 'loan',
 				'filter_through' => 'outstanding'
 			)),
-			'books_on_loan_except_book_one' => new Field_Filterable_ManyToMany(array(
+			'books_on_loan_except_book_one' => Jelly::field('filterable_manytomany', array(
 				'foreign' => 'book',
 				'through' => 'loan',
 				'filter'  => 'is_not_book_one',
 				'filter_through' => 'outstanding'
 			)),
 			
-			'books_overdue' => new Field_Filterable_ManyToMany(array(
+			'books_overdue' => Jelly::field('filterable_manytomany', array(
 				'foreign' => 'book',
 				'through' => 'loan',
 				'filter_through' => 'overdue'
 			)),
 			
-		);
+			'all_loans' => Jelly::field('filterable_hasmany', array(
+				'foreign' => 'loan',
+			)),
+			
+			'overdue_loans' => Jelly::field('filterable_hasmany', array(
+				'foreign' => 'loan',
+				'filter'  => 'overdue',
+			)),
+			'current_loans' => Jelly::field('filterable_hasmany', array(
+				'foreign' => 'loan',
+				'filter'  => 'outstanding',
+			)),
+		));
 	}
 }

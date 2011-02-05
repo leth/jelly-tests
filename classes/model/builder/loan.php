@@ -2,9 +2,10 @@
 
 class Model_Builder_Loan extends Jelly_Builder
 {
+
 	public function outstanding()
 	{
-		return $this->where('returned', 'IS', NULL);
+		return $this->where('returned', '=', NULL);
 	}
 
 	public function overdue()

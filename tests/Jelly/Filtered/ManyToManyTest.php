@@ -9,7 +9,7 @@ Jelly_Test::bootstrap();
  * @group jelly.filtered
  * @group jelly.filtered.manyToMany
  */
-Class Jelly_Filtered_ManyToMany extends PHPUnit_Framework_TestCase
+Class Jelly_Filtered_ManyToManyTest extends PHPUnit_Framework_TestCase
 {
 	
 	public function testFilterProvider()
@@ -37,14 +37,13 @@ Class Jelly_Filtered_ManyToMany extends PHPUnit_Framework_TestCase
 	 */
 	public function testFilter($member_id, $exp_count, $field, $exp_has, $exp_has_not)
 	{
-		$member = Jelly::select('member', $member_id);
+		$member = Jelly::query('member', $member_id)->select();
 		$this->assertEquals($exp_count, count($member->$field));
-		
-		foreach ($exp_has as $id)
-			$this->assertEquals(TRUE, $member->has($field, $id));
+
+		$this->assertEquals(TRUE, $member->has($field, $exp_has));
 		
 		foreach ($exp_has_not as $id)
-			$this->assertEquals(FALSE, $member->has($field, $id));
+			$this->assertEquals(FALSE, $member->has($field, array($id)));
 		
 	}
 }
