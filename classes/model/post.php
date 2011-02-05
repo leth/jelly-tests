@@ -1,38 +1,51 @@
-<?php
+<?php defined('SYSPATH') or die('No direct script access.');
 
-class Model_Post extends Jelly_Model
+/**
+ * Represents a post in the database.
+ *
+ * @package  Jelly
+ */
+class Model_Post extends Model_Test
 {
 	public static function initialize(Jelly_Meta $meta)
 	{
-		$meta->db = Jelly_Test::GROUP;
-		$meta->load_with = array('author');
-		$meta->fields += array(
-			'id' => new Field_Primary,
-			'name' => new Field_String,
-			'slug' => new Field_Slug(array(
+		parent::initialize($meta);
+		
+		// Posts always load_with an author
+		$meta->load_with(array('author'));
+		$meta->fields(array(
+			'id'   => Jelly::field('primary'),
+			
+			'name' => Jelly::field('string'),
+			
+			'slug' => Jelly::field('slug', array(
 				'unique' => TRUE
 			)),
-			'author' => new Field_BelongsTo,
-			'approved_by' => new Field_BelongsTo(array(
+			
+			'status'  => Jelly::field('enum', array(
+				'choices' => array('draft', 'published', 'review'),
+			)),
+			
+			'created' => Jelly::field('timestamp', array(
+				'auto_now_create' => TRUE
+			)),	
+			
+			'updated' => Jelly::field('timestamp', array(
+				'auto_now_update' => TRUE
+			)),	
+			
+			'author' => Jelly::field('belongsto'),
+			
+			'approved_by' => Jelly::field('belongsto', array(
 				'foreign' => 'author.id',
 				'column'  => 'approved_by',
 			)),
-			'categories' => new Field_ManyToMany,
-			'status' => new Field_Enum(array(
-				'choices' => array('published', 'draft', 'review'),
-				'default' => 'draft'
-			)),
-			'created' => new Field_Timestamp(array(
-				'auto_now_create' => TRUE
-			)),
-			'updated' => new Field_Timestamp(array(
-				'auto_now_update' => TRUE
-			)),
 			
-			// Aliased fields, for testing
-			'_id' => 'id',
-			'_name' => 'name',
-			'_categories' => 'categories',
-		);
+			'categories'  => Jelly::field('manytomany'),
+			
+			// Alias columns, for testing
+			'_id'   => 'id',
+			'_slug' => 'slug'
+		));
 	}
 }
