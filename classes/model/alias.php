@@ -13,9 +13,15 @@ class Model_Alias extends Model_Test
 		
 		// All fields are aliased to different columns
 		$meta->fields(array(
-			'id'           => new Jelly_Field_Primary('id-alias'),
-			'name'         => new Jelly_Field_String('id-alias'),
-			'description'  => new Jelly_Field_String('description-alias'),
+			'id'           => Jelly::field('primary', array(
+				'column' => 'id-alias',
+			)),
+			'name'         => Jelly::field('string', array(
+				'column' => 'name-alias',
+			)),
+			'description'  => Jelly::field('string', array(
+				'column' => 'description-alias',
+			)),
 			
 			'_id'          => 'id',
 			'_name'        => 'name',

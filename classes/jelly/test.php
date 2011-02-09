@@ -8,7 +8,7 @@
  */
 class Jelly_Test
 {
-	const GROUP = 'jelly-sqlite';
+	const GROUP = 'jelly-mysql';
 	
 	/**
 	 * Bootstraps the test environment by creating a 
@@ -26,7 +26,7 @@ class Jelly_Test
 			$file = Kohana::config('database.'.Jelly_Test::GROUP.'.dump_file');
 			
 			// The file should return an array of queries to get the DB up to speed
-			$queries = require Kohana::find_file('data', $file);
+			$queries = require Kohana::find_file('tests/test_data/jelly', $file);
 			
 			// Import the data. Probably not the cleanest way, but it works.
 			foreach($queries as $query)

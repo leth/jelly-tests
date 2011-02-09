@@ -2,7 +2,7 @@
 
 class Model_Category extends Jelly_Model
 {
-	public static function initialize($meta)
+	public static function initialize(Jelly_Meta $meta)
 	{
 		$meta->db(Jelly_Test::GROUP);
 		$meta->fields(array(

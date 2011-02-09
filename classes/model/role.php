@@ -12,8 +12,8 @@ class Model_Role extends Model_Test
 		parent::initialize($meta);
 		
 		$meta->fields(array(
-			'id' => new Jelly_Field_Primary,
-			'name' => new Jelly_Field_String,
+			'id' => Jelly::field('primary'),
+			'name' => Jelly::field('string'),
 		));
 	}
 }
