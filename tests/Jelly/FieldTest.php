@@ -7,7 +7,7 @@
  * @group   jelly
  * @group   jelly.field
  */
-class Jelly_FieldTest extends PHPUnit_Framework_TestCase
+class Jelly_FieldTest extends Unittest_TestCase
 {
 	/**
 	 * Provider for test_construction
@@ -211,7 +211,7 @@ class Jelly_FieldTest extends PHPUnit_Framework_TestCase
 			// BelongsTo
 			array(new Jelly_Field_BelongsTo, '1', 1),
 			array(new Jelly_Field_BelongsTo, 'string', 'string'),
-			array(new Jelly_Field_BelongsTo, Model::factory('post', 1), 1),
+			array(new Jelly_Field_BelongsTo, Jelly::factory('post', 1), 1),
 		);
 	}
 	

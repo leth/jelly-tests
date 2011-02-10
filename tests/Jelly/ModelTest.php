@@ -10,7 +10,7 @@ Jelly_Test::bootstrap();
  * @group   jelly
  * @group   jelly.model
  */
-class Jelly_ModelTest extends PHPUnit_Framework_TestCase
+class Jelly_ModelTest extends Unittest_TestCase
 {
 	/**
 	 * Provider for test_save_empty_model

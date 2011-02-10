@@ -7,7 +7,7 @@
  * @group   jelly
  * @group   jelly.meta
  */
-class Jelly_MetaTest extends PHPUnit_Framework_TestCase
+class Jelly_MetaTest extends Unittest_TestCase
 {
 	/**
 	 * Tests various properties on a meta object.

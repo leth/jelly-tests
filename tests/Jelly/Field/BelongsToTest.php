@@ -11,7 +11,7 @@ Jelly_Test::bootstrap();
  * @group   jelly.field
  * @group   jelly.field.belongs_to
  */
-class Jelly_Field_BelongsToTest extends PHPUnit_Framework_TestCase
+class Jelly_Field_BelongsToTest extends Unittest_TestCase
 {
 	/**
 	 * Provider for test_get

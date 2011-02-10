@@ -11,7 +11,7 @@ Jelly_Test::bootstrap();
  * @group   jelly.field
  * @group   jelly.field.has_many
  */
-class Jelly_Field_HasManyTest extends PHPUnit_Framework_TestCase
+class Jelly_Field_HasManyTest extends Unittest_TestCase
 {	
 	/**
 	 * Provider for test_get

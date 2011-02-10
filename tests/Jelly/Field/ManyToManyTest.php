@@ -11,7 +11,7 @@ Jelly_Test::bootstrap();
  * @group   jelly.field
  * @group   jelly.field.many_to_many
  */
-class Jelly_Field_ManyToManyTest extends PHPUnit_Framework_TestCase
+class Jelly_Field_ManyToManyTest extends Unittest_TestCase
 {	
 	/**
 	 * Provider for test_get

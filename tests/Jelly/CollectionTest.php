@@ -7,7 +7,7 @@
  * @group   jelly
  * @group   jelly.collection
  */
-class Jelly_CollectionTest extends PHPUnit_Framework_TestCase
+class Jelly_CollectionTest extends Unittest_TestCase
 {	
 	/**
 	 * Provider for test type

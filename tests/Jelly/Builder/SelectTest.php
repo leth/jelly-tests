@@ -11,7 +11,7 @@ Jelly_Test::bootstrap();
  * @group   jelly.builder
  * @group   jelly.builder.select
  */
-class Jelly_Builder_SelectTest extends PHPUnit_Framework_TestCase
+class Jelly_Builder_SelectTest extends Unittest_TestCase
 {
 	/**
 	 * Provider for test_multiple_select.
@@ -22,7 +22,7 @@ class Jelly_Builder_SelectTest extends PHPUnit_Framework_TestCase
 			array(Jelly::query('post'), 2),
 			array(Jelly::query('post')->where(':primary_key', '=', 1), 1),
 			array(Jelly::query('post')->order_by(':primary_key', 'ASC'), 2),
-			array(Jelly::query('post')->where(':primary_key', 'IS', 'NULL'), 0),
+			array(Jelly::query('post')->where(':primary_key', 'IS', NULL), 0),
 			
 			// Test aliasing columns
 			array(Jelly::query('author')->order_by('_id', 'ASC'), 3),

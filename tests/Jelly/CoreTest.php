@@ -7,7 +7,7 @@
  * @group   jelly
  * @group   jelly.core
  */
-class Jelly_CoreTest extends PHPUnit_Framework_TestCase
+class Jelly_CoreTest extends Unittest_TestCase
 {
 	/**
 	 * Provider for test_register

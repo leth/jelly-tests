@@ -8,7 +8,7 @@
  * @group   jelly.field
  * @group   jelly.field.boolean
  */
-class Jelly_Field_BooleanTest extends PHPUnit_Framework_TestCase
+class Jelly_Field_BooleanTest extends Unittest_TestCase
 {
 	/**
 	 * Boolean fields cannot have convert_empty set to TRUE.

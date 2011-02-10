@@ -8,7 +8,7 @@
  * @group   jelly.field
  * @group   jelly.field.primary
  */
-class Jelly_Field_PrimaryTest extends PHPUnit_Framework_TestCase
+class Jelly_Field_PrimaryTest extends Unittest_TestCase
 {
 	/**
 	 * Primary fields cannot have allow_null set to FALSE.

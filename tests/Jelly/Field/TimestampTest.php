@@ -8,7 +8,7 @@
  * @group   jelly.field
  * @group   jelly.field.timestamp
  */
-class Jelly_Field_TimestampTest extends PHPUnit_Framework_TestCase
+class Jelly_Field_TimestampTest extends Unittest_TestCase
 {
 	/**
 	 * Provider for test_format

@@ -8,7 +8,7 @@
  * @group   jelly.field
  * @group   jelly.field.password
  */
-class Jelly_Field_PasswordTest extends PHPUnit_Framework_TestCase
+class Jelly_Field_PasswordTest extends Unittest_TestCase
 {
 	/**
 	 * Tests that passwords are not re-hashed accidentally.
