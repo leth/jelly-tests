@@ -1,6 +1,6 @@
 # Tests for Jelly
 
-These tests are designed to be run with Kohana 3.0's [Unit Test](http://github.com/kohana/unittest) module. They require access to a MySQL, PostgresSQL, or SQLite database. Preparing the database is handled by the test suite.
+These tests are designed to be run with Kohana 3.1's [Unit Test](http://github.com/kohana/unittest) module. They require access to a MySQL, PostgresSQL, or SQLite database. Preparing the database is handled by the test suite.
 
 ## How to choose the database you'd like the tests to run on
 
