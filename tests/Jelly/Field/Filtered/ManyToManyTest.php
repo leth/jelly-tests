@@ -6,10 +6,11 @@ Jelly_Test::bootstrap();
  * Tests filtered ManyToMany relationships
  *
  * @group jelly
- * @group jelly.filtered
- * @group jelly.filtered.manyToMany
+ * @group jelly.field
+ * @group jelly.field.filtered
+ * @group jelly.field.filtered.manyToMany
  */
-Class Jelly_Filtered_ManyToManyTest extends PHPUnit_Framework_TestCase
+Class Jelly_Field_Filtered_ManyToManyTest extends PHPUnit_Framework_TestCase
 {
 	
 	public function testFilterProvider()

@@ -6,10 +6,11 @@ Jelly_Test::bootstrap();
  * Tests filtered hasMany repationships
  *
  * @group jelly
- * @group jelly.filtered
- * @group jelly.filtered.hasMany
+ * @group jelly.field
+ * @group jelly.field.filtered
+ * @group jelly.field.filtered.hasMany
  */
-Class Jelly_Filtered_HasManyTest extends PHPUnit_Framework_TestCase
+Class Jelly_Field_Filtered_HasManyTest extends PHPUnit_Framework_TestCase
 {
 
 	public function testFilterProvider()
