@@ -3,7 +3,7 @@
 Jelly_Test::bootstrap();
 
 /**
- * Tests filtered hasMany repationships
+ * Tests filtered HasMany relationships
  *
  * @group jelly
  * @group jelly.field
