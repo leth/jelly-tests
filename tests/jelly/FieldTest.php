@@ -211,7 +211,7 @@ class Jelly_FieldTest extends Unittest_TestCase
 			// BelongsTo
 			array(new Jelly_Field_BelongsTo, '1', 1),
 			array(new Jelly_Field_BelongsTo, 'string', 'string'),
-			array(new Jelly_Field_BelongsTo, Jelly::factory('post', 1), 1),
+			array(new Jelly_Field_BelongsTo, Jelly::factory('test_post', 1), 1),
 		);
 	}
 	

@@ -40,7 +40,7 @@ class Jelly_Field_TimestampTest extends Unittest_TestCase
 	 */
 	public function test_auto_create_and_update()
 	{
-		$post = Jelly::factory('post')
+		$post = Jelly::factory('test_post')
 			->set(array(
 				'name' => 'test post',
 				'slug' => 'test-post',

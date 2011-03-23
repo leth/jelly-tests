@@ -19,11 +19,11 @@ class Jelly_Field_BelongsToTest extends Unittest_TestCase
 	public function provider_get()
 	{
 		return array(
-			array(Jelly::factory('post', 1)->get('author'), TRUE),
-			array(Jelly::factory('post', 2)->get('author'), TRUE),
-			array(Jelly::factory('post', 2)->get('author')->where('name', 'IS', NULL), FALSE),
-			array(Jelly::factory('post', 555)->get('author'), FALSE),
-			array(Jelly::factory('post')->get('author'), FALSE),
+			array(Jelly::factory('test_post', 1)->get('test_author'), TRUE),
+			array(Jelly::factory('test_post', 2)->get('test_author'), TRUE),
+			array(Jelly::factory('test_post', 2)->get('test_author')->where('name', 'IS', NULL), FALSE),
+			array(Jelly::factory('test_post', 555)->get('test_author'), FALSE),
+			array(Jelly::factory('test_post')->get('test_author'), FALSE),
 		);
 	}
 	

@@ -1,6 +1,6 @@
 <?php
 
-class Model_Category extends Jelly_Model
+class Model_Test_Category extends Jelly_Model
 {
 	public static function initialize(Jelly_Meta $meta)
 	{
@@ -8,9 +8,9 @@ class Model_Category extends Jelly_Model
 		$meta->fields(array(
 			'id'     => Jelly::field('primary'),
 			'name'   => Jelly::field('string'),
-			'posts'  => Jelly::field('manytomany'),
+			'test_posts'  => Jelly::field('manytomany'),
 			'parent' => Jelly::field('belongsto', array(
-				'foreign' => 'category',
+				'foreign' => 'test_category',
 				'column' => 'parent_id'
 			)),
 		));

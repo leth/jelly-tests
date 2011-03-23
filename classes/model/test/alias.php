@@ -5,7 +5,7 @@
  *
  * @package  Jelly
  */
-class Model_Alias extends Model_Test
+class Model_Test_Alias extends Model_Test
 {		
 	public static function initialize(Jelly_Meta $meta)
 	{

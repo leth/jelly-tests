@@ -5,14 +5,14 @@
  *
  * @package  Jelly
  */
-class Model_Post extends Model_Test
+class Model_Test_Post extends Model_Test
 {
 	public static function initialize(Jelly_Meta $meta)
 	{
 		parent::initialize($meta);
 		
 		// Posts always load_with an author
-		$meta->load_with(array('author'));
+		$meta->load_with(array('test_author'));
 		$meta->fields(array(
 			'id'   => Jelly::field('primary'),
 			
@@ -34,14 +34,14 @@ class Model_Post extends Model_Test
 				'auto_now_update' => TRUE
 			)),	
 			
-			'author' => Jelly::field('belongsto'),
-			
+			'test_author' => Jelly::field('belongsto'),
+
 			'approved_by' => Jelly::field('belongsto', array(
-				'foreign' => 'author.id',
+				'foreign' => 'test_author.id',
 				'column'  => 'approved_by',
 			)),
-			
-			'categories'  => Jelly::field('manytomany'),
+
+			'test_categories'  => Jelly::field('manytomany'),
 			
 			// Alias columns, for testing
 			'_id'   => 'id',

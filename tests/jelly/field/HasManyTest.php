@@ -19,8 +19,8 @@ class Jelly_Field_HasManyTest extends Unittest_TestCase
 	public function provider_get()
 	{
 		return array(
-			array(Jelly::factory('author', 1)->get('posts'), 2),
-			array(Jelly::factory('author', 555)->get('posts'), 0),
+			array(Jelly::factory('test_author', 1)->get('test_posts'), 2),
+			array(Jelly::factory('test_author', 555)->get('test_posts'), 0),
 		);
 	}
 	

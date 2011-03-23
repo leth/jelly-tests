@@ -32,7 +32,7 @@ class Jelly_MetaTest extends Unittest_TestCase
 		     ->primary_key('id2')
 		     ->name_key('name')
 		     ->foreign_key('meta_fk')
-		     ->load_with(array('post'))
+		     ->load_with(array('test_post'))
 		     ->finalize('meta');
 		
 		// Ensure the simple properties are preserved
@@ -46,7 +46,7 @@ class Jelly_MetaTest extends Unittest_TestCase
 			'foreign_key' => 'meta_fk',
 			'builder'     => 'Jelly_Builder_Foo',
 			'sorting'     => array('foo' => 'bar'),
-			'load_with'   => array('post'),
+			'load_with'   => array('test_post'),
 		);
 		
 		foreach ($expected as $property => $value)
@@ -68,8 +68,7 @@ class Jelly_MetaTest extends Unittest_TestCase
 			'name' => ''
 		));
 		
-		// Ensure Validator and Behaviors return actual objects
+		// Ensure Behaviors return actual objects
 		$this->assertTrue($meta->behaviors() instanceof Jelly_Behavior);
-		$this->assertTrue($meta->validator(array()) instanceof Jelly_Validator);
 	}
 }

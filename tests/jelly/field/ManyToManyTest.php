@@ -19,9 +19,9 @@ class Jelly_Field_ManyToManyTest extends Unittest_TestCase
 	public function provider_get()
 	{
 		return array(
-			array(Jelly::factory('post', 1)->get('categories'), 3),
-			array(Jelly::factory('post', 2)->get('categories'), 1),
-			array(Jelly::factory('post', 555)->get('categories'), 0),
+			array(Jelly::factory('test_post', 1)->get('test_categories'), 3),
+			array(Jelly::factory('test_post', 2)->get('test_categories'), 1),
+			array(Jelly::factory('test_post', 555)->get('test_categories'), 0),
 		);
 	}
 	
