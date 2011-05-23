@@ -1,6 +1,6 @@
 <?php
 
-class Model_Builder_Loan extends Jelly_Builder
+class Model_Builder_Test_Loan extends Jelly_Builder
 {
 
 	public function outstanding()

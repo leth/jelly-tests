@@ -33,7 +33,7 @@ Class Jelly_Field_Filtered_HasOneThroughTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testFilter($book_id, $member_id, $field)
 	{
-		$book = Jelly::query('book', $member_id)->select();
+		$book = Jelly::query('test_book', $member_id)->select();
 		$member = $book->$field;
 		
 		if ($member_id === FALSE)

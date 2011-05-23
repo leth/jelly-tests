@@ -32,7 +32,7 @@ Class Jelly_Field_Filtered_HasManyTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testFilter($member_id, $exp_count, $field, $exp_has, $exp_has_not)
 	{
-		$member = Jelly::query('member', $member_id)->select();
+		$member = Jelly::query('test_member', $member_id)->select();
 		$this->assertEquals($exp_count, count($member->$field));
 
 		if (count($exp_has) != 0)

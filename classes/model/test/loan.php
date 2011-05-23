@@ -1,6 +1,6 @@
 <?php
 
-class Model_Loan extends Model_Test
+class Model_Test_Loan extends Model_Test
 {
 	public static function initialize(Jelly_Meta $meta)
 	{

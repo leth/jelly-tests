@@ -1,6 +1,6 @@
 <?php
 
-class Model_Builder_Book extends Jelly_Builder
+class Model_Builder_Test_Book extends Jelly_Builder
 {
 	
 	/**
