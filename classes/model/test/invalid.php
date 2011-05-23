@@ -5,7 +5,7 @@
  *
  * @package  Jelly
  */
-class Model_Invalid
+class Model_Test_Invalid
 {
 	
 }

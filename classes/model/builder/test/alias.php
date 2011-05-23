@@ -1,11 +1,11 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 /**
- * Builder for Model_Alias.
+ * Builder for Model_Test_Alias.
  *
  * @package  Jelly
  */
-class Model_Builder_Alias extends Jelly_Builder
+class Model_Builder_Test_Alias extends Jelly_Builder
 {		
 
 }

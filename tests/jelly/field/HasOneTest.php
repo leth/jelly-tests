@@ -11,7 +11,7 @@ Jelly_Test::bootstrap();
  * @group   jelly.field
  * @group   jelly.field.has_one
  */
-class Jelly_Field_HasOneTest extends PHPUnit_Framework_TestCase
+class Jelly_Field_HasOneTest extends Unittest_TestCase
 {
 	/**
 	 * Provider for test_get
@@ -19,9 +19,9 @@ class Jelly_Field_HasOneTest extends PHPUnit_Framework_TestCase
 	public function provider_get()
 	{
 		return array(
-			array(Jelly::factory('author', 1)->get('post'), TRUE),
-			array(Jelly::factory('author', 2)->get('post'), FALSE),
-			array(Jelly::factory('author', 555)->get('post'), FALSE),
+			array(Jelly::factory('test_author', 1)->get('test_post'), TRUE),
+			array(Jelly::factory('test_author', 2)->get('test_post'), FALSE),
+			array(Jelly::factory('test_author', 555)->get('test_post'), FALSE),
 		);
 	}
 	

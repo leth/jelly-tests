@@ -4,14 +4,14 @@
 Jelly_Test::bootstrap();
 
 /**
- * Tests ManyToMany fields.
+ * Tests HasMany fields.
  *
  * @package Jelly
  * @group   jelly
  * @group   jelly.field
- * @group   jelly.field.many_to_many
+ * @group   jelly.field.has_many
  */
-class Jelly_Field_ManyToManyTest extends PHPUnit_Framework_TestCase
+class Jelly_Field_HasManyTest extends Unittest_TestCase
 {	
 	/**
 	 * Provider for test_get
@@ -19,14 +19,13 @@ class Jelly_Field_ManyToManyTest extends PHPUnit_Framework_TestCase
 	public function provider_get()
 	{
 		return array(
-			array(Jelly::factory('post', 1)->get('categories'), 3),
-			array(Jelly::factory('post', 2)->get('categories'), 1),
-			array(Jelly::factory('post', 555)->get('categories'), 0),
+			array(Jelly::factory('test_author', 1)->get('test_posts'), 2),
+			array(Jelly::factory('test_author', 555)->get('test_posts'), 0),
 		);
 	}
 	
 	/**
-	 * Tests Jelly_Field_ManyToMany::get()
+	 * Tests Jelly_Field_HasMany::get()
 	 * 
 	 * @dataProvider  provider_get
 	 */

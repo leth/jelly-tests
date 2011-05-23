@@ -7,7 +7,7 @@
  * @group   jelly
  * @group   jelly.core
  */
-class Jelly_CoreTest extends PHPUnit_Framework_TestCase
+class Jelly_CoreTest extends Unittest_TestCase
 {
 	/**
 	 * Provider for test_register
@@ -15,14 +15,14 @@ class Jelly_CoreTest extends PHPUnit_Framework_TestCase
 	public function provider_register()
 	{
 		return array(
-			array('alias', TRUE),
-			array(new Model_Alias, TRUE),
+			array('test_alias', TRUE),
+			array(new Model_Test_Alias, TRUE),
 			
 			// Model_Invalid exists but does not extend Jelly_Model
-			array('invalid', FALSE),
+			array('test_invalid', FALSE),
 			
 			// Model_Unknown does not exist
-			array('unknown', FALSE),
+			array('test_unknown', FALSE),
 			
 			// Shouldn't throw any exceptions
 			array(NULL, FALSE),
@@ -66,9 +66,9 @@ class Jelly_CoreTest extends PHPUnit_Framework_TestCase
 	public function provider_model_name()
 	{
 		return array(
-			array('model_alias', 'alias'),
-			array(new Model_Alias, 'alias'),
-			array('alias', 'alias'), // Should not chomp if there is no prefix
+			array('model_test_alias', 'test_alias'),
+			array(new Model_Test_Alias, 'test_alias'),
+			array('test_alias', 'test_alias'), // Should not chomp if there is no prefix
 		);
 	}
 	
@@ -88,9 +88,9 @@ class Jelly_CoreTest extends PHPUnit_Framework_TestCase
 	public function provider_class_name()
 	{
 		return array(
-			array('alias', 'model_alias'),
-			array(new Model_Alias, 'model_alias'),
-			array('model_alias', 'model_model_alias'), // Should add prefix even if it already exists
+			array('test_alias', 'model_test_alias'),
+			array(new Model_Test_Alias, 'model_test_alias'),
+			array('model_test_alias', 'model_model_test_alias'), // Should add prefix even if it already exists
 		);
 	}
 	

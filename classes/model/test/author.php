@@ -5,7 +5,7 @@
  *
  * @package  Jelly
  */
-class Model_Author extends Model_Test
+class Model_Test_Author extends Model_Test
 {
 	public static function initialize(Jelly_Meta $meta)
 	{
@@ -16,9 +16,10 @@ class Model_Author extends Model_Test
 			'name'     => Jelly::field('string'),
 			'password' => Jelly::field('password'),
 			'email'    => Jelly::field('email'),
-			'posts'    => Jelly::field('hasmany'),
-			'post'     => Jelly::field('hasone'),
-			'role'     => Jelly::field('belongsto'),
+
+			'test_posts'    => Jelly::field('hasmany'),
+			'test_post'     => Jelly::field('hasone'),
+			'test_role'     => Jelly::field('belongsto'),
 			
 			// Aliases for testing
 			'_id'      => 'id',

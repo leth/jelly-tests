@@ -8,7 +8,7 @@
  * @group   jelly.field
  * @group   jelly.field.password
  */
-class Jelly_Field_PasswordTest extends PHPUnit_Framework_TestCase
+class Jelly_Field_PasswordTest extends Unittest_TestCase
 {
 	/**
 	 * Tests that passwords are not re-hashed accidentally.
@@ -17,7 +17,7 @@ class Jelly_Field_PasswordTest extends PHPUnit_Framework_TestCase
 	 */
 	public function test_change_password()
 	{
-		$model = Jelly::factory('author');
+		$model = Jelly::factory('test_author');
 
 		// Set the password, which should be hashed on save()
 		$model->password = 'abc';
@@ -27,7 +27,7 @@ class Jelly_Field_PasswordTest extends PHPUnit_Framework_TestCase
 		$this->assertSame('a9993e364706816aba3e25717850c26c9cd0d89d', $model->password);
 		
 		// Ensure it's not re-hashed when retrieving
-		$this->assertSame('a9993e364706816aba3e25717850c26c9cd0d89d', Jelly::factory('author', $model->id)->password);
+		$this->assertSame('a9993e364706816aba3e25717850c26c9cd0d89d', Jelly::factory('test_author', $model->id)->password);
 
 		// Test updates now
 		$model->password = '12345';

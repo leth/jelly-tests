@@ -7,21 +7,21 @@
  * @group   jelly
  * @group   jelly.collection
  */
-class Jelly_CollectionTest extends PHPUnit_Framework_TestCase
+class Jelly_CollectionTest extends Unittest_TestCase
 {	
 	/**
 	 * Provider for test type
 	 */
 	public function provider_construction()
 	{
-		$result = DB::select()->from('posts');
+		$result = DB::select()->from('test_posts');
 		
 		return array(
-			array(new Jelly_Collection($result->execute(Jelly_Test::GROUP), 'Model_Post'), 'Model_Post'),
-			array(new Jelly_Collection($result->execute(Jelly_Test::GROUP), Jelly::factory('post')), 'Model_Post'),
+			array(new Jelly_Collection($result->execute(Jelly_Test::GROUP), 'Model_Test_Post'), 'Model_Test_Post'),
+			array(new Jelly_Collection($result->execute(Jelly_Test::GROUP), Jelly::factory('test_post')), 'Model_Test_Post'),
 			array(new Jelly_Collection($result->execute(Jelly_Test::GROUP)), FALSE),
 			array(new Jelly_Collection($result->as_object()->execute(Jelly_Test::GROUP)), 'stdClass'),
-			array(new Jelly_Collection($result->execute(Jelly_Test::GROUP), 'Model_Post'), 'Model_Post'),
+			array(new Jelly_Collection($result->execute(Jelly_Test::GROUP), 'Model_Test_Post'), 'Model_Test_Post'),
 		);
 	}
 	

@@ -8,7 +8,7 @@
  * @group   jelly.field
  * @group   jelly.field.timestamp
  */
-class Jelly_Field_TimestampTest extends PHPUnit_Framework_TestCase
+class Jelly_Field_TimestampTest extends Unittest_TestCase
 {
 	/**
 	 * Provider for test_format
@@ -40,7 +40,7 @@ class Jelly_Field_TimestampTest extends PHPUnit_Framework_TestCase
 	 */
 	public function test_auto_create_and_update()
 	{
-		$post = Jelly::factory('post')
+		$post = Jelly::factory('test_post')
 			->set(array(
 				'name' => 'test post',
 				'slug' => 'test-post',

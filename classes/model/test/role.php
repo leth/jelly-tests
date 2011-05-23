@@ -5,15 +5,15 @@
  *
  * @package  Jelly
  */
-class Model_Role extends Model_Test
+class Model_Test_Role extends Model_Test
 {
 	public static function initialize(Jelly_Meta $meta)
 	{
 		parent::initialize($meta);
 		
 		$meta->fields(array(
-			'id' => new Jelly_Field_Primary,
-			'name' => new Jelly_Field_String,
+			'id' => Jelly::field('primary'),
+			'name' => Jelly::field('string'),
 		));
 	}
 }
