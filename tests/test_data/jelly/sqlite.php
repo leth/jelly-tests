@@ -124,6 +124,9 @@ return array
 	
 	"INSERT INTO test_members (id, name)
 	VALUES (NULL, 'Joe');",
+
+	"INSERT INTO test_members (id, name)
+	VALUES (NULL, 'Jim');",
 	
 	"DROP TABLE IF EXISTS books",
 	
@@ -140,7 +143,10 @@ return array
 	
 	"INSERT INTO test_books (id, name)
 	VALUES (NULL, 'Book Three');",
-	
+
+	"INSERT INTO test_books (id, name)
+	VALUES (NULL, 'Book Four');",
+
 	"DROP TABLE IF EXISTS loans",
 	
 	"CREATE TABLE test_loans (
@@ -163,4 +169,18 @@ return array
 	
 	"INSERT INTO test_loans (id, test_book_id, test_member_id, issued, due, returned)
 	VALUES (NULL, 3, 2, ". strtotime('3 days ago') .', '. strtotime('2 days ago') .', '. strtotime('1 day ago') .");",
+
+	"INSERT INTO test_loans (id, test_book_id, test_member_id, issued, due, returned)
+	VALUES (NULL, 3, 3, ". strtotime('1 day ago') .', '. strtotime('tomorrow') .', NULL);',
+
+	"CREATE TABLE test_books_test_members (
+		id INTEGER PRIMARY KEY,
+		test_book_id INTEGER,
+		test_member_id INTEGER,
+		issued INTEGER,
+		due INTEGER,
+		returned INTEGER NULL
+	);",
+
+	"INSERT INTO test_books_test_members SELECT * FROM test_loans;",
 );

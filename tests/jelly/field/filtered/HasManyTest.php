@@ -1,5 +1,6 @@
 <?php
 
+// Ensure the test environment has been created
 Jelly_Test::bootstrap();
 
 /**
@@ -13,7 +14,7 @@ Jelly_Test::bootstrap();
 Class Jelly_Field_Filtered_HasManyTest extends PHPUnit_Framework_TestCase
 {
 
-	public function testFilterProvider()
+	public function provider_filter()
 	{
 		return array(
 			// No Filtering. Should function as vanilla HasMany
@@ -28,9 +29,9 @@ Class Jelly_Field_Filtered_HasManyTest extends PHPUnit_Framework_TestCase
 	}
 	
 	/**
-	 * @dataProvider testFilterProvider
+	 * @dataProvider provider_filter
 	 */
-	public function testFilter($member_id, $exp_count, $field, $exp_has, $exp_has_not)
+	public function test_filter($member_id, $exp_count, $field, $exp_has, $exp_has_not)
 	{
 		$member = Jelly::query('test_member', $member_id)->select();
 		$this->assertEquals($exp_count, count($member->$field));

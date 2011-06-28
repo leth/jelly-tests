@@ -1,5 +1,6 @@
 <?php
 
+// Ensure the test environment has been created
 Jelly_Test::bootstrap();
 
 /**
@@ -41,7 +42,8 @@ Class Jelly_Field_Filtered_ManyToManyTest extends PHPUnit_Framework_TestCase
 		$member = Jelly::query('test_member', $member_id)->select();
 		$this->assertEquals($exp_count, count($member->$field));
 
-		$this->assertEquals(TRUE, $member->has($field, $exp_has));
+		foreach ($exp_has as $id)
+			$this->assertEquals(TRUE, $member->has($field, $id));
 		
 		foreach ($exp_has_not as $id)
 			$this->assertEquals(FALSE, $member->has($field, array($id)));

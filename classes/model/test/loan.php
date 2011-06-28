@@ -8,8 +8,8 @@ class Model_Test_Loan extends Model_Test
 		
 		$meta->fields(array(
 			'id' => Jelly::field('primary'),
-			'member' => Jelly::field('belongsto'),
-			'book' => Jelly::field('hasone'),
+			'test_member' => Jelly::field('belongsto'),
+			'test_book' => Jelly::field('hasone'),
 			
 			'issued' => Jelly::field('timestamp'),
 			'due' => Jelly::field('timestamp'),
