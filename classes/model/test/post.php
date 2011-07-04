@@ -35,6 +35,10 @@ class Model_Test_Post extends Model_Test
 			)),	
 			
 			'test_author' => Jelly::field('belongsto'),
+			'rohtua' => Jelly::field('belongsto', array(
+				'column'  => 'test_author_id',
+				'foreign' => 'test_author',
+			)),
 
 			'approved_by' => Jelly::field('belongsto', array(
 				'foreign' => 'test_author.id',

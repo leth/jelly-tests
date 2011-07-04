@@ -20,6 +20,10 @@ class Model_Test_Author extends Model_Test
 			'test_posts'    => Jelly::field('hasmany'),
 			'test_post'     => Jelly::field('hasone'),
 			'test_role'     => Jelly::field('belongsto'),
+			'elor'     => Jelly::field('belongsto', array(
+				'column'  => 'test_role_id',
+				'foreign' => 'test_role',
+			)),
 			
 			// Aliases for testing
 			'_id'      => 'id',
